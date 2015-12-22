@@ -63,6 +63,11 @@ class ApacheParser(object):
         # Must also attempt to parse virtual host root
         self._parse_file(self.vhostroot + "/*.conf")
 
+        #check to see if there were unparsed define statements
+        if self.unparsable:
+            if self.find_dir("Define", exclude=False):
+                raise errors.PluginError("Error parsing runtime variables")
+
     def init_modules(self):
         """Iterates on the configuration until no new modules are loaded.
 
@@ -104,7 +109,7 @@ class ApacheParser(object):
         try:
             matches.remove("DUMP_RUN_CFG")
         except ValueError:
-            raise errors.PluginError("Unable to parse runtime variables")
+            return
 
         for match in matches:
             if match.count("=") > 1:
