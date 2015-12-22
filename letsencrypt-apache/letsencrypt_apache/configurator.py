@@ -565,9 +565,6 @@ class ApacheConfigurator(augeas_configurator.AugeasConfigurator):
         # Check for Listen <port>
         # Note: This could be made to also look for ip:443 combo
         listens = [self.parser.get_arg(x).split()[0] for x in self.parser.find_dir("Listen")]
-        # Check for Listen <port>
-        # Note: This could be made to also look for ip:443 combo
-        listens = [self.parser.get_arg(x).split()[0] for x in self.parser.find_dir("Listen")]
         # In case no Listens are set (which really is a broken apache config)
         if not listens:
             listens = ["80"]
