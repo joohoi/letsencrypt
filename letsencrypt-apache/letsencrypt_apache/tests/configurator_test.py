@@ -325,7 +325,7 @@ class TwoVhost80Test(util.ApacheTest):
 
     def test_deploy_cert_old_apache_no_chain(self):
         self.config = util.get_apache_configurator(
-            self.config_path, self.vhost_path,  self.config_dir, self.work_dir, version=(2, 4, 7))
+            self.config_path, self.vhost_path, self.config_dir, self.work_dir, version=(2, 4, 7))
         self.config = self.mock_deploy_cert(self.config)
 
         self.config.parser.modules.add("ssl_module")
