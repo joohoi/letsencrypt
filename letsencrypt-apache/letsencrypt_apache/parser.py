@@ -63,7 +63,7 @@ class ApacheParser(object):
         self._parse_file(self.vhostroot + "/*.conf")
 
         #check to see if there were unparsed define statements
-        if self.unparsable:
+        if version < (2, 4):
             if self.find_dir("Define", exclude=False):
                 raise errors.PluginError("Error parsing runtime variables")
 
