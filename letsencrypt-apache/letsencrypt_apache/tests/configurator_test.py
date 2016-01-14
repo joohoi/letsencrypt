@@ -963,7 +963,7 @@ class TwoVhost80Test(util.ApacheTest):
         self.config.parser.add_dir(
             http_vhost.path, "RewriteRule",
             ["^",
-             "https://%{SERVER_NAME}%{REQUEST_URI}",
+             "https://%{SERVER_NAME}%{REQUEST_URI} ",
              "[L,QSA,R=permanent]"])
         self.config.save()
 
