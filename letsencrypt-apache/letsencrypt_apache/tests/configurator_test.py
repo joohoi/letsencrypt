@@ -963,7 +963,7 @@ class TwoVhost80Test(util.ApacheTest):
         self.config.parser.add_dir(
             http_vhost.path, "RewriteRule",
             ["^",
-             "https://%{SERVER_NAME}%{REQUEST_URI} ",
+             "https://%{SERVER_NAME}%{REQUEST_URI}",
              "[L,QSA,R=permanent]"])
         self.config.save()
 
@@ -974,7 +974,7 @@ class TwoVhost80Test(util.ApacheTest):
 
         conf_text = open(ssl_vhost.filep).read()
         commented_rewrite_rule = ("# RewriteRule ^ "
-                                  "https://%{SERVER_NAME}%{REQUEST_URI}"
+                                  "https://%{SERVER_NAME}%{REQUEST_URI} "
                                   "[L,QSA,R=permanent]")
         self.assertTrue(commented_rewrite_rule in conf_text)
         mock_get_utility().add_message.assert_called_once_with(mock.ANY,
