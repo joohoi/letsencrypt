@@ -9,11 +9,7 @@ from letsencrypt.plugins import common_test
 from letsencrypt_apache import obj
 from letsencrypt_apache.tests import util
 
-# Python 2 <-> 3 interoperability
-try:
-    xrange
-except NameError:
-    xrange = range
+from six.moves import xrange  # pylint: disable=redefined-builtin
 
 
 class TlsSniPerformTest(util.ApacheTest):

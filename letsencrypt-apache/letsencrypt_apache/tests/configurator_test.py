@@ -70,8 +70,8 @@ class TwoVhost80Test(util.ApacheTest):
     def test_prepare_old_aug(self, mock_exe_exists, _):
         mock_exe_exists.return_value = True
         self.config.config_test = mock.Mock()
-        self.config._check_aug_version = mock.Mock(return_value=False)
         # pylint: disable=protected-access
+        self.config._check_aug_version = mock.Mock(return_value=False)
         self.assertRaises(
             errors.NotSupportedError, self.config.prepare)
 
@@ -925,7 +925,7 @@ class TwoVhost80Test(util.ApacheTest):
         self.vh_truth[1].name = "default.com"
         self.vh_truth[1].aliases = set(["yes.default.com"])
 
-        # pylint: disable=proteced-access
+        # pylint: disable=protected-access
         self.config._enable_redirect(self.vh_truth[1], "")
         self.assertEqual(len(self.config.vhosts), 7)
 
